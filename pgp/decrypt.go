@@ -11,17 +11,8 @@ import (
 )
 
 func Decrypt(entity *openpgp.Entity, encrypted []byte) ([]byte, error) {
-	// Decode message -- this is part of https://github.com/jchavannes/go-pgp/
-	// block, err := armor.Decode(bytes.NewReader(encrypted))
-	// if err != nil {
-	// 	return []byte{}, fmt.Errorf("Error decoding: %v", err)
-	// }
-	// if block.Type != "Message" {
-	// 	return []byte{}, errors.New("Invalid message type")
-	// }
-
 	// New code, load the encrypted buffer without decoding any armour.
-	block := bytes.NewBuffer(encrypted)
+	block := bytes.NewReader(encrypted)
 
 	// Decrypt message
 	entityList := openpgp.EntityList{entity}
@@ -33,19 +24,6 @@ func Decrypt(entity *openpgp.Entity, encrypted []byte) ([]byte, error) {
 	if err != nil {
 		return []byte{}, fmt.Errorf("Error reading unverified body: %v", err)
 	}
-
-	// Uncompress message -- this is part of https://github.com/jchavannes/go-pgp/
-	// reader := bytes.NewReader(read)
-	// uncompressed, err := gzip.NewReader(reader)
-	// if err != nil {
-	// 	return []byte{}, fmt.Errorf("Error initializing gzip reader: %v", err)
-	// }
-	// defer uncompressed.Close()
-
-	// out, err := ioutil.ReadAll(uncompressed)
-	// if err != nil {
-	// 	return []byte{}, err
-	// }
 
 	// Return output - an decrypted message.
 	return read, nil
