@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/jchavannes/go-pgp/pgp"
+	"github.com/albatross-org/go-pgp/pgp"
 )
 
 func TestEncrypt(t *testing.T) {

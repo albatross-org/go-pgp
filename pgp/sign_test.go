@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/jchavannes/go-pgp/pgp"
+	"github.com/albatross-org/go-pgp/pgp"
 )
 
 func TestSignature(t *testing.T) {
