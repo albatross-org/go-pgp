@@ -1,5 +1,8 @@
 # Go PGP
 
+> This is a fork of <https://github.com/jchavannes/go-pgp/> which disables compression and encoding.
+> Ideally at some point, this library wouldn't be needed and `x/crypto/opengpg` could be used directly.
+
 Layer on top of `golang.org/x/crypto/openpgp` to handle a few PGP use cases.
 
 ## Examples
